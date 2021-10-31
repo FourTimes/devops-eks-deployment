@@ -1,3 +1,4 @@
+---
 name: apps deployment
 on:
   workflow_dispatch:
