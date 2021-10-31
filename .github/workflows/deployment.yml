@@ -38,7 +38,7 @@ jobs:
         run: aws eks --region eu-central-1 update-kubeconfig --name devops-cluster-dev
       - uses: actions-hub/kubectl@master
         env:
-          KUBE_CONFIG: "/home/runner/.kube/config"
+          KUBE_CONFIG: $HOME/.kube/config
         with:
           args: get pods
 
