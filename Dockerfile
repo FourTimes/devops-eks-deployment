@@ -1,3 +1,4 @@
+# FROM maven:3.6.3-jdk-11
 FROM openjdk:8-jdk-alpine as build
 ARG VERSION=3.8.3
 WORKDIR /app
@@ -7,5 +8,6 @@ RUN rm -rf apache-maven-$VERSION-bin.zip
 ENV MAVEN_HOME=/app/apache-maven-$VERSION
 ENV PATH="$MAVEN_HOME/bin:$PATH"
 COPY . .
-RUN mvn clean install
-RUN ls -la target/
+# RUN mvn -N io.takari:maven:0.7.7:wrapper
+# RUN ./mvnw spring-boot:run
+# RUN ls -la target/
