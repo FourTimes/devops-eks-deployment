@@ -36,10 +36,11 @@ jobs:
           tags: 773342935443.dkr.ecr.eu-central-1.amazonaws.com/devops-cluster-dev:latest
       - name: kubernetes credentials download
         run: aws eks --region eu-central-1 update-kubeconfig --name devops-cluster-dev
-      - uses: actions-hub/kubectl@master
-        env:
-          KUBE_CONFIG: $HOME/.kube/config
+      - uses: azure/setup-kubectl@v1
         with:
-          args: get pods
+          version: latest
+        id: install
+      - name: get pods
+        run: kubectl get pods
 
           
