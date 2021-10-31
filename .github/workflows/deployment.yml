@@ -18,17 +18,21 @@ jobs:
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      # - name: Login to DockerHub
-      #   uses: docker/login-action@v1
-      #   with:
-      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
-      #     password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.SECRET_KEY }}
+          aws-region: eu-central-1
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: jjino/node-app:11
+          tags: 773342935443.dkr.ecr.eu-central-1.amazonaws.com/devops-cluster-dev:latest
       # - name: configure aws credentials
       #   uses: aws-actions/configure-aws-credentials@v1
       #   with:
