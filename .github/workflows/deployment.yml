@@ -40,7 +40,7 @@ jobs:
         with:
           version: latest
         id: install
-      - name: get pods
+      - name: apply
         run: kubectl apply -f kubes.yml
-      - name: get pods
-        run: kubectl get pods
+      - name: pods and services
+        run: kubectl get pod,svc
