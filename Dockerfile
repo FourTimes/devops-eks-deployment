@@ -7,5 +7,5 @@ RUN rm -rf apache-maven-$VERSION-bin.zip
 ENV MAVEN_HOME=/app/apache-maven-$VERSION
 ENV PATH="$MAVEN_HOME/bin:$PATH"
 COPY . .
-RUN mvn clean package
+RUN mvn clean install
 RUN ls -la target/
