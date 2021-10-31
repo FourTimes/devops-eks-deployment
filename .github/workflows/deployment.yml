@@ -33,12 +33,6 @@ jobs:
           context: .
           push: true
           tags: 773342935443.dkr.ecr.eu-central-1.amazonaws.com/devops-cluster-dev:latest
-      # - name: configure aws credentials
-      #   uses: aws-actions/configure-aws-credentials@v1
-      #   with:
-      #     aws-access-key-id: ${{ secrets.ACCESS_KEY }}
-      #     aws-secret-access-key: ${{ secrets.SECRET_KEY }}
-      #     aws-region: eu-central-1
       # - name: set path variables as kubectl
       #   run: |
       #     curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
