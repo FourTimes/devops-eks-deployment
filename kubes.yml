@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+    type: RollingUpdate
+  replicas: 3
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      role: web-server
+  template:
+    metadata:
+      name: web
+      labels:
+        role: web-server
+    spec:
+      containers:
+      - name: web
+        image: 773342935443.dkr.ecr.eu-central-1.amazonaws.com/devops-cluster-dev:latest
+        ports:
+        - name: sp
+          containerPort: 8080
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring
+spec:
+  type: LoadBalancer
+  selector:
+    role: web-server
+  ports:
+  - port: 80
+    targetPort: 8080
