@@ -44,3 +44,8 @@ jobs:
         run: kubectl apply -f kubes.yml
       - name: pods and services
         run: kubectl get pod,svc
+      - name: apply
+        run: kubectl delete	t2.medium	
+2/2 checks passed	
+No alarms
+eu-central-1b	–	–	–	–	disabled	eks-remoteAccess-94be6af7-a9db-4508-d00c-0fcec90d3ff3,eks-cluster-sg-devops-cluster-dev-1755188622	vanguard	2021/10/31 16:12 GMT+5:30 -f kubes.yml
